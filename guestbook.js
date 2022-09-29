@@ -1,13 +1,13 @@
 /**
  * Web application
  */
-const apiUrl = 'https://7b1e1813.eu-gb.apigw.appdomain.cloud/guestbook';
+const apiUrl = 'https://eu-de.functions.appdomain.cloud/api/v1/web/3c122bad-f41e-4e17-bcbd-be4f913886e7/guestbook';
 const guestbook = {
   // retrieve the existing guestbook entries
   get() {
     return $.ajax({
       type: 'GET',
-      url: `${apiUrl}/entries`,
+      url: `${apiUrl}/read-guestbook-entries-sequence.json`,
       dataType: 'json'
     });
   },
@@ -16,7 +16,7 @@ const guestbook = {
     console.log('Sending', name, email, comment)
     return $.ajax({
       type: 'PUT',
-      url: `${apiUrl}/entries`,
+      url: `${apiUrl}/save-guestbook-entry-sequence.json`,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
         name,
